@@ -16,4 +16,7 @@
 @property (strong, nonatomic) NRDetailViewController *detailViewController;
 @property (strong, nonatomic) BirdSightDataController *dataController;
 
+- (IBAction)done:(UIStoryboardSegue *)segue;
+- (IBAction)cancel:(UIStoryboardSegue *)segue;
+
 @end

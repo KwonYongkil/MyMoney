@@ -11,6 +11,7 @@
 #import "NRDetailViewController.h"
 #import "BirdSightDataController.h"
 #import "NRBirdSight.h"
+#import "AddSightViewController.h"
 
 @interface NRMasterViewController () {
     //NSMutableArray *_objects;
@@ -19,6 +20,26 @@
 @end
 
 @implementation NRMasterViewController
+
+- (IBAction)done:(UIStoryboardSegue *)segue
+{
+    if ([[segue identifier] isEqualToString:@"ReturnInput"]) {
+        
+        AddSightViewController *addController = [segue sourceViewController];
+        if (addController.birdSight) {
+            [self.dataController addBirdSightWithBirdSight:addController.birdSight];
+            [[self tableView] reloadData];
+        }
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
+}
+
+- (IBAction)cancel:(UIStoryboardSegue *)segue
+{
+    if ([[segue identifier] isEqualToString:@"CancelInput"]) {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
+}
 
 - (void)awakeFromNib
 {
@@ -155,7 +176,7 @@
         //NSDate *object = _objects[indexPath.row];
         //self.detailViewController.detailItem = object;
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     //[performSegueWithIdentifier:@"ShowSightDetails"];
     //[self.splitViewController performSegueWithIdentifier:@"ShowSightDetails"    sender:self.splitViewController];
     [self performSegueWithIdentifier:@"ShowSightDetails" sender:nil];

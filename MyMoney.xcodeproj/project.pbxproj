@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		912F5E1A168728C000CC3F0E /* AddSightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912F5E18168728C000CC3F0E /* AddSightViewController.m */; };
+		912F5E1B168728C000CC3F0E /* AddSightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 912F5E19168728C000CC3F0E /* AddSightViewController.xib */; };
 		91A5662A1686D9C0003E10F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A566291686D9C0003E10F5 /* UIKit.framework */; };
 		91A5662C1686D9C0003E10F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5662B1686D9C0003E10F5 /* Foundation.framework */; };
 		91A5662E1686D9C0003E10F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5662D1686D9C0003E10F5 /* CoreGraphics.framework */; };
@@ -40,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		912F5E17168728C000CC3F0E /* AddSightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSightViewController.h; path = ../AddSightViewController.h; sourceTree = "<group>"; };
+		912F5E18168728C000CC3F0E /* AddSightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSightViewController.m; path = ../AddSightViewController.m; sourceTree = "<group>"; };
+		912F5E19168728C000CC3F0E /* AddSightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddSightViewController.xib; path = ../AddSightViewController.xib; sourceTree = "<group>"; };
 		91A566251686D9C0003E10F5 /* MyMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A566291686D9C0003E10F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91A5662B1686D9C0003E10F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,10 +70,10 @@
 		91A5665D1686D9C1003E10F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		91A5665F1686D9C1003E10F5 /* MyMoneyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMoneyTests.h; sourceTree = "<group>"; };
 		91A566601686D9C1003E10F5 /* MyMoneyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMoneyTests.m; sourceTree = "<group>"; };
-		91A5666E1686EB27003E10F5 /* NRBirdSight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRBirdSight.h; sourceTree = "<group>"; };
-		91A5666F1686EB28003E10F5 /* NRBirdSight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRBirdSight.m; sourceTree = "<group>"; };
-		91A566721686ED85003E10F5 /* BirdSightDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdSightDataController.h; sourceTree = "<group>"; };
-		91A566731686ED85003E10F5 /* BirdSightDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdSightDataController.m; sourceTree = "<group>"; };
+		91A5666E1686EB27003E10F5 /* NRBirdSight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRBirdSight.h; path = MyMoney/NRBirdSight.h; sourceTree = "<group>"; };
+		91A5666F1686EB28003E10F5 /* NRBirdSight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRBirdSight.m; path = MyMoney/NRBirdSight.m; sourceTree = "<group>"; };
+		91A566721686ED85003E10F5 /* BirdSightDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BirdSightDataController.h; path = MyMoney/BirdSightDataController.h; sourceTree = "<group>"; };
+		91A566731686ED85003E10F5 /* BirdSightDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BirdSightDataController.m; path = MyMoney/BirdSightDataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,12 +134,11 @@
 		91A5662F1686D9C0003E10F5 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				912F5E17168728C000CC3F0E /* AddSightViewController.h */,
+				912F5E18168728C000CC3F0E /* AddSightViewController.m */,
+				912F5E19168728C000CC3F0E /* AddSightViewController.xib */,
 				91A566381686D9C0003E10F5 /* NRAppDelegate.h */,
 				91A566391686D9C0003E10F5 /* NRAppDelegate.m */,
-				91A5666E1686EB27003E10F5 /* NRBirdSight.h */,
-				91A5666F1686EB28003E10F5 /* NRBirdSight.m */,
-				91A566721686ED85003E10F5 /* BirdSightDataController.h */,
-				91A566731686ED85003E10F5 /* BirdSightDataController.m */,
 				91A566411686D9C0003E10F5 /* MainStoryboard_iPhone.storyboard */,
 				91A566441686D9C0003E10F5 /* MainStoryboard_iPad.storyboard */,
 				91A566471686D9C0003E10F5 /* NRMasterViewController.h */,
@@ -183,6 +187,10 @@
 		91A566751686F6A9003E10F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				91A5666E1686EB27003E10F5 /* NRBirdSight.h */,
+				91A5666F1686EB28003E10F5 /* NRBirdSight.m */,
+				91A566721686ED85003E10F5 /* BirdSightDataController.h */,
+				91A566731686ED85003E10F5 /* BirdSightDataController.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -265,6 +273,7 @@
 				91A566401686D9C0003E10F5 /* Default-568h@2x.png in Resources */,
 				91A566431686D9C0003E10F5 /* MainStoryboard_iPhone.storyboard in Resources */,
 				91A566461686D9C0003E10F5 /* MainStoryboard_iPad.storyboard in Resources */,
+				912F5E1B168728C000CC3F0E /* AddSightViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +314,7 @@
 				91A5664C1686D9C0003E10F5 /* NRDetailViewController.m in Sources */,
 				91A566701686EB28003E10F5 /* NRBirdSight.m in Sources */,
 				91A566741686ED85003E10F5 /* BirdSightDataController.m in Sources */,
+				912F5E1A168728C000CC3F0E /* AddSightViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
