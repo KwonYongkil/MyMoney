@@ -7,6 +7,7 @@
 //
 
 #import "NRDetailViewController.h"
+#import "NRBirdSight.h"
 
 @interface NRDetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -17,6 +18,7 @@
 
 #pragma mark - Managing the detail item
 
+/*
 - (void)setDetailItem:(id)newDetailItem
 {
     if (_detailItem != newDetailItem) {
@@ -29,14 +31,36 @@
     if (self.masterPopoverController != nil) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
     }        
+}*/
+
+- (void)setSight:(NRBirdSight *)sight{
+    if (_sight != sight){
+        _sight = sight;
+        
+        // Update the view
+        [self configureView];
+    }
 }
 
 - (void)configureView
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
+    /*if (self.detailItem) {
         self.detailDescriptionLabel.text = [self.detailItem description];
+    }*/
+    NRBirdSight *sight = self.sight;
+    
+    static NSDateFormatter *formatter = nil;
+    if (formatter == nil) {
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+    }
+    
+    if (sight){
+        self.birdNameLabel.text = sight.name;
+        self.locationLabel.text = sight.location;
+        self.dateLabel.text = [formatter stringFromDate:(NSDate*)sight.date];
     }
 }
 

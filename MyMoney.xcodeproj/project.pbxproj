@@ -25,6 +25,8 @@
 		91A566561686D9C1003E10F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5662B1686D9C0003E10F5 /* Foundation.framework */; };
 		91A5665E1686D9C1003E10F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91A5665C1686D9C1003E10F5 /* InfoPlist.strings */; };
 		91A566611686D9C1003E10F5 /* MyMoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A566601686D9C1003E10F5 /* MyMoneyTests.m */; };
+		91A566701686EB28003E10F5 /* NRBirdSight.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5666F1686EB28003E10F5 /* NRBirdSight.m */; };
+		91A566741686ED85003E10F5 /* BirdSightDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A566731686ED85003E10F5 /* BirdSightDataController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,10 @@
 		91A5665D1686D9C1003E10F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		91A5665F1686D9C1003E10F5 /* MyMoneyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMoneyTests.h; sourceTree = "<group>"; };
 		91A566601686D9C1003E10F5 /* MyMoneyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMoneyTests.m; sourceTree = "<group>"; };
+		91A5666E1686EB27003E10F5 /* NRBirdSight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRBirdSight.h; sourceTree = "<group>"; };
+		91A5666F1686EB28003E10F5 /* NRBirdSight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRBirdSight.m; sourceTree = "<group>"; };
+		91A566721686ED85003E10F5 /* BirdSightDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdSightDataController.h; sourceTree = "<group>"; };
+		91A566731686ED85003E10F5 /* BirdSightDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdSightDataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +98,8 @@
 		91A5661A1686D9C0003E10F5 = {
 			isa = PBXGroup;
 			children = (
-				91A5662F1686D9C0003E10F5 /* MyMoney */,
+				91A566751686F6A9003E10F5 /* Model */,
+				91A5662F1686D9C0003E10F5 /* GUI */,
 				91A566591686D9C1003E10F5 /* MyMoneyTests */,
 				91A566281686D9C0003E10F5 /* Frameworks */,
 				91A566261686D9C0003E10F5 /* Products */,
@@ -119,11 +126,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		91A5662F1686D9C0003E10F5 /* MyMoney */ = {
+		91A5662F1686D9C0003E10F5 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
 				91A566381686D9C0003E10F5 /* NRAppDelegate.h */,
 				91A566391686D9C0003E10F5 /* NRAppDelegate.m */,
+				91A5666E1686EB27003E10F5 /* NRBirdSight.h */,
+				91A5666F1686EB28003E10F5 /* NRBirdSight.m */,
+				91A566721686ED85003E10F5 /* BirdSightDataController.h */,
+				91A566731686ED85003E10F5 /* BirdSightDataController.m */,
 				91A566411686D9C0003E10F5 /* MainStoryboard_iPhone.storyboard */,
 				91A566441686D9C0003E10F5 /* MainStoryboard_iPad.storyboard */,
 				91A566471686D9C0003E10F5 /* NRMasterViewController.h */,
@@ -132,6 +143,7 @@
 				91A5664B1686D9C0003E10F5 /* NRDetailViewController.m */,
 				91A566301686D9C0003E10F5 /* Supporting Files */,
 			);
+			name = GUI;
 			path = MyMoney;
 			sourceTree = "<group>";
 		};
@@ -166,6 +178,13 @@
 				91A5665C1686D9C1003E10F5 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		91A566751686F6A9003E10F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +303,8 @@
 				91A5663A1686D9C0003E10F5 /* NRAppDelegate.m in Sources */,
 				91A566491686D9C0003E10F5 /* NRMasterViewController.m in Sources */,
 				91A5664C1686D9C0003E10F5 /* NRDetailViewController.m in Sources */,
+				91A566701686EB28003E10F5 /* NRBirdSight.m in Sources */,
+				91A566741686ED85003E10F5 /* BirdSightDataController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +489,7 @@
 				91A566661686D9C1003E10F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		91A566671686D9C1003E10F5 /* Build configuration list for PBXNativeTarget "MyMoneyTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +498,7 @@
 				91A566691686D9C1003E10F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

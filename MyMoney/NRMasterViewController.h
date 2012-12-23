@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class NRDetailViewController;
+@class BirdSightDataController;
 
 @interface NRMasterViewController : UITableViewController
 
 @property (strong, nonatomic) NRDetailViewController *detailViewController;
+@property (strong, nonatomic) BirdSightDataController *dataController;
 
 @end
