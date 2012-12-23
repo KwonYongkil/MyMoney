@@ -134,7 +134,19 @@
         if ([self.NameInput.text length] || [self.LocationInput.text length]) {
             NRBirdSight *sighting;
             NSDate *today = [NSDate date];
-            sighting = [[NRBirdSight alloc] initWithName:self.NameInput.text location:self.LocationInput.text date:today];
+            
+            NSString *text = self.NameInput.text;
+            NSArray *list = [text componentsSeparatedByString:@" "];
+            NSString *value;
+            NSString *buyItem;
+            
+            if (list.count >= 8){
+                value = (NSString*)[list objectAtIndex:8];
+                buyItem = (NSString*)[list objectAtIndex:5];
+                
+            }
+            
+            sighting = [[NRBirdSight alloc] initWithName:value location:buyItem date:today];
             self.birdSight = sighting;
         }
     }

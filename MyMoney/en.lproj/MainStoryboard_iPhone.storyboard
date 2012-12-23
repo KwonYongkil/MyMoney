@@ -85,24 +85,26 @@
                         <sections>
                             <tableViewSection headerTitle="Section-1" id="rl6-ZX-gZ7">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nr7-kk-afm">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="nr7-kk-afm">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2In-0l-Saw">
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="U7K-1o-fOx"/>
                                                         <constraint firstAttribute="width" constant="63" type="user" id="dCZ-yP-2ab"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fj0-Er-zBB">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="266" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="fj0-Er-zBB">
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" type="user" id="1mF-Lg-2TV"/>
+                                                        <constraint firstAttribute="height" constant="32" id="cS6-1P-MvQ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
@@ -114,17 +116,17 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="2In-0l-Saw" firstAttribute="top" secondItem="nr7-kk-afm" secondAttribute="top" constant="11" id="3wE-S4-Gh8"/>
                                             <constraint firstItem="fj0-Er-zBB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2In-0l-Saw" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="9ZH-ei-NvU"/>
+                                            <constraint firstItem="fj0-Er-zBB" firstAttribute="top" secondItem="nr7-kk-afm" secondAttribute="top" constant="8" id="K5P-oB-jEr"/>
                                             <constraint firstItem="fj0-Er-zBB" firstAttribute="baseline" secondItem="2In-0l-Saw" secondAttribute="baseline" type="default" id="SXG-9l-IDU"/>
-                                            <constraint firstItem="2In-0l-Saw" firstAttribute="top" secondItem="nr7-kk-afm" secondAttribute="top" constant="11" id="Vum-7O-vLZ"/>
                                             <constraint firstItem="fj0-Er-zBB" firstAttribute="leading" relation="lessThanOrEqual" secondItem="2In-0l-Saw" secondAttribute="trailing" priority="999" constant="8" symbolic="YES" type="user" id="jTF-L0-GdC"/>
                                             <constraint firstAttribute="trailing" secondItem="fj0-Er-zBB" secondAttribute="trailing" constant="20" type="user" id="pA8-HH-U1e"/>
                                             <constraint firstItem="2In-0l-Saw" firstAttribute="leading" secondItem="nr7-kk-afm" secondAttribute="leading" constant="20" type="user" id="roU-x1-f8p"/>
-                                            <constraint firstItem="fj0-Er-zBB" firstAttribute="centerY" secondItem="nr7-kk-afm" secondAttribute="centerY" type="default" id="xIV-h6-tih"/>
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2O4-ld-qHV">
-                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="122" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
