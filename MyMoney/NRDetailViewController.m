@@ -52,14 +52,21 @@
     NRBirdSight *sight = self.sight;
     
     static NSDateFormatter *formatter = nil;
+    static NSNumberFormatter *numFormatter = nil;
+    
     if (formatter == nil) {
         formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
     }
     
+    if (numFormatter == nil) {
+        numFormatter = [[NSNumberFormatter alloc] init];
+        [numFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+    }
+
     if (sight){
         self.birdNameLabel.text = sight.productName;
-        self.locationLabel.text = [NSString stringWithFormat:@"%@", sight.price];
+        self.locationLabel.text = [numFormatter stringFromNumber: sight.price];
         self.dateLabel.text = [formatter stringFromDate:(NSDate*)sight.date];
     }
 }

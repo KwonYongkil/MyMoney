@@ -66,7 +66,7 @@
  */
 
 - (NSString*)deleteIgnoreKeyword: (NSString *) text{
-    NSArray *keywords = [NSArray arrayWithObjects:@"일시불", @"*누적", @"누계",nil ];
+    NSArray *keywords = [NSArray arrayWithObjects:@"일시불/",@"일시불", @"*누적", @"누적", @"누계",nil ];
     
     for (NSString *keyword in keywords) {
         text = [text stringByReplacingOccurrencesOfString:keyword withString:@""];
@@ -103,6 +103,7 @@
     if ([token hasSuffix:@"원"]) {
         token = [token stringByReplacingOccurrencesOfString:@"원" withString:@""];
         token = [token stringByReplacingOccurrencesOfString:@"," withString:@""]; // CHECK
+        //NSLog(@"  ;; token = %@", token);
         *price = [[NSDecimalNumber  alloc] initWithString:token];
         return TRUE;
         //return [price initWithString:token]>0;
@@ -120,13 +121,15 @@
     
     NSString *buyItem;
     NSDecimalNumber *price = nil;
+    NSDecimalNumber *newPrice = nil;
 
     if (text != nil) {
         
         //2. parse stirngs with white characters;
         NSArray *list = [text componentsSeparatedByCharactersInSet:
                             [NSCharacterSet characterSetWithCharactersInString:@"\n "]];
-        for (NSString *token in list) {
+        for (NSString *aToken in list) {
+            NSString *token = [aToken stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             if ([token isEqualToString:@""]){
                 continue;
             }
@@ -141,8 +144,13 @@
                     NSLog(@"token Date=[%@]", token);
                 } else if ([self isTime:token]) {
                     NSLog(@"token Time=[%@]", token);
-                } else if ( ([self getPriceFromToken:&price token:token]) ) {
-                    //NSLog(@"token price=[%@]", token);
+                } else if ( ([self getPriceFromToken:&newPrice token:token]) ) {
+                    if (price == nil)
+                        price = newPrice;
+                    else if ( [price compare:newPrice] == NSOrderedDescending ){
+                        price = newPrice;
+                    }
+
                     NSLog(@"token price=[%@] <- %@", price, token);
                 }
                 else /* it must be product name */ {
@@ -261,6 +269,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"BirdSightCell";
     static NSDateFormatter *formatter = nil;
+    static NSNumberFormatter *numFormatter = nil;
     
     if ( formatter == nil){
         formatter = [ [NSDateFormatter alloc] init];
@@ -271,7 +280,12 @@
     NRBirdSight *birdSight =  [self.dataController itemInListAtIndex:indexPath.row];
     [ [cell textLabel] setText:birdSight.productName];
     //[ [cell detailTextLabel] setText: [formatter stringFromDate:(NSDate*)birdSight.date]];
-    [ [cell detailTextLabel] setText: [NSString stringWithFormat:@"%@", birdSight.price]];
+    
+    if (numFormatter == nil) {
+        numFormatter = [[NSNumberFormatter alloc] init];
+        [numFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+    }
+    [ [cell detailTextLabel] setText: [numFormatter stringFromNumber: birdSight.price]];
     return cell;
     
 }
