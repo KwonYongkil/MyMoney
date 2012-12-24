@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		912F5E1A168728C000CC3F0E /* AddSightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912F5E18168728C000CC3F0E /* AddSightViewController.m */; };
 		912F5E1B168728C000CC3F0E /* AddSightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 912F5E19168728C000CC3F0E /* AddSightViewController.xib */; };
+		919B37AB16888BC100E22924 /* money-manager-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 919B37AA16888BC100E22924 /* money-manager-57.png */; };
+		919B37AD16888BC700E22924 /* money-manager-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 919B37AC16888BC700E22924 /* money-manager-114.png */; };
 		91A5662A1686D9C0003E10F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A566291686D9C0003E10F5 /* UIKit.framework */; };
 		91A5662C1686D9C0003E10F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5662B1686D9C0003E10F5 /* Foundation.framework */; };
 		91A5662E1686D9C0003E10F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5662D1686D9C0003E10F5 /* CoreGraphics.framework */; };
@@ -45,6 +47,8 @@
 		912F5E17168728C000CC3F0E /* AddSightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSightViewController.h; path = ../AddSightViewController.h; sourceTree = "<group>"; };
 		912F5E18168728C000CC3F0E /* AddSightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSightViewController.m; path = ../AddSightViewController.m; sourceTree = "<group>"; };
 		912F5E19168728C000CC3F0E /* AddSightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddSightViewController.xib; path = ../AddSightViewController.xib; sourceTree = "<group>"; };
+		919B37AA16888BC100E22924 /* money-manager-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "money-manager-57.png"; sourceTree = "<group>"; };
+		919B37AC16888BC700E22924 /* money-manager-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "money-manager-114.png"; sourceTree = "<group>"; };
 		91A566251686D9C0003E10F5 /* MyMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A566291686D9C0003E10F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91A5662B1686D9C0003E10F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,6 +107,8 @@
 		91A5661A1686D9C0003E10F5 = {
 			isa = PBXGroup;
 			children = (
+				919B37AC16888BC700E22924 /* money-manager-114.png */,
+				919B37AA16888BC100E22924 /* money-manager-57.png */,
 				91A566751686F6A9003E10F5 /* Model */,
 				91A5662F1686D9C0003E10F5 /* GUI */,
 				91A566591686D9C1003E10F5 /* MyMoneyTests */,
@@ -140,7 +146,6 @@
 				91A566381686D9C0003E10F5 /* NRAppDelegate.h */,
 				91A566391686D9C0003E10F5 /* NRAppDelegate.m */,
 				91A566411686D9C0003E10F5 /* MainStoryboard_iPhone.storyboard */,
-				91A566441686D9C0003E10F5 /* MainStoryboard_iPad.storyboard */,
 				91A566471686D9C0003E10F5 /* NRMasterViewController.h */,
 				91A566481686D9C0003E10F5 /* NRMasterViewController.m */,
 				91A5664A1686D9C0003E10F5 /* NRDetailViewController.h */,
@@ -154,6 +159,7 @@
 		91A566301686D9C0003E10F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				91A566441686D9C0003E10F5 /* MainStoryboard_iPad.storyboard */,
 				91A566311686D9C0003E10F5 /* MyMoney-Info.plist */,
 				91A566321686D9C0003E10F5 /* InfoPlist.strings */,
 				91A566351686D9C0003E10F5 /* main.m */,
@@ -274,6 +280,8 @@
 				91A566431686D9C0003E10F5 /* MainStoryboard_iPhone.storyboard in Resources */,
 				91A566461686D9C0003E10F5 /* MainStoryboard_iPad.storyboard in Resources */,
 				912F5E1B168728C000CC3F0E /* AddSightViewController.xib in Resources */,
+				919B37AB16888BC100E22924 /* money-manager-57.png in Resources */,
+				919B37AD16888BC700E22924 /* money-manager-114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

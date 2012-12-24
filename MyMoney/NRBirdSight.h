@@ -10,9 +10,9 @@
 
 @interface NRBirdSight : NSObject
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *location;
+@property (nonatomic, copy) NSString *productName;
+@property (nonatomic, copy) NSDecimalNumber* price;
 @property (nonatomic, strong) NSDate *date;
 
--(id)initWithName: (NSString*)name location:(NSString*) location date:(NSDate*) date;
+-(id)initWithName: (NSString*)productName price:(NSDecimalNumber*) price date:(NSDate*) date;
 @end

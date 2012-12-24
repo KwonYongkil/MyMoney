@@ -19,4 +19,11 @@
 - (IBAction)done:(UIStoryboardSegue *)segue;
 - (IBAction)cancel:(UIStoryboardSegue *)segue;
 
+- (NSString*)deleteIgnoreKeyword: (NSString *) text;
+- (BOOL)isCardKind: (NSString*) token;
+- (BOOL)isUserName: (NSString*) token;
+- (BOOL)isDate: (NSString*) token;
+- (BOOL)isTime: (NSString*) token;
+- (BOOL)getPriceFromToken: (NSDecimalNumber **)price token:(NSString*) token;
+
 @end

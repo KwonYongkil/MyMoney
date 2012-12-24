@@ -13,13 +13,153 @@
 #import "NRBirdSight.h"
 #import "AddSightViewController.h"
 
+
+//#import "Pas"
+
 @interface NRMasterViewController () {
     //NSMutableArray *_objects;
-    BirdSightDataController *_list;
+    //BirdSightDataController *_list;
 }
 @end
 
 @implementation NRMasterViewController
+
+
+/*
+ Algorithm
+ 
+    1. <ignore_keyword>를 삭제한다.
+    2. parse stirngs with white characters;
+    3. For each item
+        TRIM
+        CHECK <cardKind_keyword> 
+        CHECK date & time
+        CHECK if price , keep lower
+        set ... to productName
+ 
+ SMS Text Sample
+ 씨티카드(2*7*)         cardKind    : 씨티카드*, 하나SK*, 삼성카드*, 롯데
+ 강귀남님               //userName    : *님
+ 12/23                buyDate: 99/99
+ 17:56                buyTime: 99:99
+ 일시불                 <ignore_keyword>
+ 50,150원              price: *원
+ 누계                  <ignore_keyword>
+ 2,633,051원           //totalPrice: *원  -> price와 어떻게 구분할 것인가? ... 저장하지 않고, 작은 값만 유효하게...
+ 미스터피자상갈보라점       productName: 유일한 ELSE
+
+ 
+ 삼성카드승인
+ 12/24 
+ 12:17
+ 3,300원
+ 일시불
+ (주)이비카드경기
+ *누적
+ 3,300원
+
+ 하나SK(7*3*)권*길님 
+ 12/24 
+ 11:45 
+ (주)새서 
+ 77,480원/410,120원
+ */
+
+- (NSString*)deleteIgnoreKeyword: (NSString *) text{
+    NSArray *keywords = [NSArray arrayWithObjects:@"일시불", @"*누적", @"누계",nil ];
+    
+    for (NSString *keyword in keywords) {
+        text = [text stringByReplacingOccurrencesOfString:keyword withString:@""];
+    }
+    return text;
+}
+
+- (BOOL)isCardKind: (NSString*) token{
+    NSArray *keywords = [NSArray arrayWithObjects:@"씨티카드", @"삼성", @"하나SK",@"롯데", nil ];
+    
+    for (NSString *keyword in keywords) {
+        if ([token hasPrefix:keyword])
+            return TRUE;
+        //text = [text stringByReplacingOccurrencesOfString:keyword withString:@""];
+    }
+    return FALSE;
+}
+- (BOOL)isUserName: (NSString*) token{
+    
+    return [token hasSuffix:@"님"];
+}
+- (BOOL)isDate: (NSString*) token{
+    // format: 99/99
+    token = [token stringByReplacingOccurrencesOfString:@"/" withString:@""];
+    return ( ([token length]==4) && ([token intValue]>0));
+}
+- (BOOL)isTime: (NSString*) token{
+    // format: 99:99
+    token = [token stringByReplacingOccurrencesOfString:@":" withString:@""];
+    return ( ([token length]==4) && ([token intValue]>0));
+}
+
+- (BOOL)getPriceFromToken: (NSDecimalNumber **)price token:(NSString*) token{
+    if ([token hasSuffix:@"원"]) {
+        token = [token stringByReplacingOccurrencesOfString:@"원" withString:@""];
+        token = [token stringByReplacingOccurrencesOfString:@"," withString:@""]; // CHECK
+        *price = [[NSDecimalNumber  alloc] initWithString:token];
+        return TRUE;
+        //return [price initWithString:token]>0;
+    }
+    return 0;
+}
+
+- (IBAction)PasteBtn:(id)sender {
+    
+    UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+    NSString *text = [pasteBoard string];
+    
+    //1. <ignore_keyword>를 삭제한다.
+    text = [self deleteIgnoreKeyword:text];
+    
+    NSString *buyItem;
+    NSDecimalNumber *price = nil;
+
+    if (text != nil) {
+        
+        //2. parse stirngs with white characters;
+        NSArray *list = [text componentsSeparatedByCharactersInSet:
+                            [NSCharacterSet characterSetWithCharactersInString:@"\n "]];
+        for (NSString *token in list) {
+            if ([token isEqualToString:@""]){
+                continue;
+            }
+            else {
+                //NSLog(@"valid token=[%@]", token);
+                if ([self isCardKind:token]){
+                    // set
+                    NSLog(@"token cardKind=[%@]", token);
+                } else if ([self isUserName:token]) {
+                    NSLog(@"token userName=[%@]", token);
+                } else if ([self isDate:token]) {
+                    NSLog(@"token Date=[%@]", token);
+                } else if ([self isTime:token]) {
+                    NSLog(@"token Time=[%@]", token);
+                } else if ( ([self getPriceFromToken:&price token:token]) ) {
+                    //NSLog(@"token price=[%@]", token);
+                    NSLog(@"token price=[%@] <- %@", price, token);
+                }
+                else /* it must be product name */ {
+                    NSLog(@"token product=[%@]", token);
+                    buyItem = token;
+                }
+            }
+        }
+        NRBirdSight *item = [[NRBirdSight alloc] initWithName:buyItem price:price date:[NSDate date]];
+        [self.dataController addBirdSightWithBirdSight:item];
+    }
+    else {
+        // CHECK
+    }
+    
+    [[self tableView] reloadData];
+}
 
 - (IBAction)done:(UIStoryboardSegue *)segue
 {
@@ -129,8 +269,9 @@
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellIdentifier];
     NRBirdSight *birdSight =  [self.dataController itemInListAtIndex:indexPath.row];
-    [ [cell textLabel] setText:birdSight.name];
-    [ [cell detailTextLabel] setText: [formatter stringFromDate:(NSDate*)birdSight.date]];
+    [ [cell textLabel] setText:birdSight.productName];
+    //[ [cell detailTextLabel] setText: [formatter stringFromDate:(NSDate*)birdSight.date]];
+    [ [cell detailTextLabel] setText: [NSString stringWithFormat:@"%@", birdSight.price]];
     return cell;
     
 }

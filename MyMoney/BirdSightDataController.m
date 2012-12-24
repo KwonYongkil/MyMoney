@@ -20,7 +20,8 @@
     self.masterBirdSightList = sightList;
     NRBirdSight* birdSight;
     NSDate* today = [NSDate date];
-    birdSight = [[NRBirdSight alloc] initWithName:@"Pegion" location:@"Seoul" date:today];
+    NSDecimalNumber* price = [NSDecimalNumber one];
+    birdSight = [[NRBirdSight alloc] initWithName:@"Pegion" price:price date:today];
     
     [self addBirdSightWithBirdSight: birdSight];
 }

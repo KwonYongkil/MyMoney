@@ -58,8 +58,8 @@
     }
     
     if (sight){
-        self.birdNameLabel.text = sight.name;
-        self.locationLabel.text = sight.location;
+        self.birdNameLabel.text = sight.productName;
+        self.locationLabel.text = [NSString stringWithFormat:@"%@", sight.price];
         self.dateLabel.text = [formatter stringFromDate:(NSDate*)sight.date];
     }
 }

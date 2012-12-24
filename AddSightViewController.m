@@ -146,7 +146,7 @@
                 
             }
             
-            sighting = [[NRBirdSight alloc] initWithName:value location:buyItem date:today];
+            sighting = [[NRBirdSight alloc] initWithName:value price:0 date:today];
             self.birdSight = sighting;
         }
     }
