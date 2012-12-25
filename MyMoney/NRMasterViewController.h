@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class NRDetailViewController;
-@class BirdSightDataController;
+@class ItemDataController;
 
 @interface NRMasterViewController : UITableViewController
 
 @property (strong, nonatomic) NRDetailViewController *detailViewController;
-@property (strong, nonatomic) BirdSightDataController *dataController;
+@property (strong, nonatomic) ItemDataController *dataController;
 
 - (IBAction)done:(UIStoryboardSegue *)segue;
 - (IBAction)cancel:(UIStoryboardSegue *)segue;

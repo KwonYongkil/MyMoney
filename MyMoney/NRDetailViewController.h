@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-@class NRBirdSight;
+@class Item;
 @interface NRDetailViewController : UITableViewController
 
 //@property (strong, nonatomic) id detailItem;
 //@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
-@property(strong, nonatomic) NRBirdSight *sight;
+@property(strong, nonatomic) Item *item;
 @property(weak, nonatomic) IBOutlet UILabel *birdNameLabel;
 @property(weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property(weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *kindLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sumLabel;
 
 @end

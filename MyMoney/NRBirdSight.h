@@ -15,4 +15,5 @@
 @property (nonatomic, strong) NSDate *date;
 
 -(id)initWithName: (NSString*)productName price:(NSDecimalNumber*) price date:(NSDate*) date;
+-(id)initWithName:(NSString *)productName price:(NSDecimalNumber*) price dateStr:(NSString *)dateStr timeStr:(NSString *)timeStr;
 @end

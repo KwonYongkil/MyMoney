@@ -7,7 +7,7 @@
 //
 
 #import "NRDetailViewController.h"
-#import "NRBirdSight.h"
+#import "Item.h"
 
 @interface NRDetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -33,9 +33,9 @@
     }        
 }*/
 
-- (void)setSight:(NRBirdSight *)sight{
-    if (_sight != sight){
-        _sight = sight;
+- (void)setItem:(Item *)item{
+    if (_item != item){
+        _item = item;
         
         // Update the view
         [self configureView];
@@ -49,14 +49,15 @@
     /*if (self.detailItem) {
         self.detailDescriptionLabel.text = [self.detailItem description];
     }*/
-    NRBirdSight *sight = self.sight;
+    Item *item = self.item;
     
     static NSDateFormatter *formatter = nil;
     static NSNumberFormatter *numFormatter = nil;
     
     if (formatter == nil) {
         formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        //[formatter setDateStyle:NSDateFormatterLongStyle];
+        [formatter setDateFormat:@"YYYY.MM.dd HH:mm"];
     }
     
     if (numFormatter == nil) {
@@ -64,10 +65,13 @@
         [numFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
     }
 
-    if (sight){
-        self.birdNameLabel.text = sight.productName;
-        self.locationLabel.text = [numFormatter stringFromNumber: sight.price];
-        self.dateLabel.text = [formatter stringFromDate:(NSDate*)sight.date];
+    if (item){
+        self.userLabel.text = item.userName;
+        self.kindLabel.text = item.cardKind;
+        self.birdNameLabel.text = item.productName;
+        self.locationLabel.text = [numFormatter stringFromNumber: item.price];
+        self.dateLabel.text = [formatter stringFromDate:(NSDate*)item.date];
+        self.sumLabel.text = [numFormatter stringFromNumber: item.sumOfPrice];
     }
 }
 

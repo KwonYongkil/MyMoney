@@ -22,6 +22,7 @@ SMS Text Sample
 */
 
 @implementation NRBirdSight
+
 -(id)initWithName:(NSString *)productName price:(NSDecimalNumber*) price date:(NSDate *)date
 {
     self = [super init];
@@ -29,6 +30,22 @@ SMS Text Sample
         _productName = productName;
         _price = price;
         _date = date;
+        return self;
+    }
+    return nil;
+}
+
+
+-(id)initWithName:(NSString *)productName price:(NSDecimalNumber*) price dateStr:(NSString *)dateStr timeStr:(NSString *)timeStr
+{
+    self = [super init];
+    if (self){
+        _productName = productName;
+        _price = price;
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MM/dd HH:mm"];
+        _date = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",dateStr, timeStr]];
         return self;
     }
     return nil;

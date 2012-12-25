@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class NRBirdSight;
+@class Item;
 
 @interface AddSightViewController : UITableViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *NameInput;
 @property (weak, nonatomic) IBOutlet UITextField *LocationInput;
 
-@property (strong, nonatomic) NRBirdSight *birdSight;
+@property (strong, nonatomic) Item *item;
 @end

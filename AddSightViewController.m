@@ -7,7 +7,7 @@
 //
 
 #import "AddSightViewController.h"
-#import "NRBirdSight.h"
+#import "Item.h"
 
 @interface AddSightViewController ()
 
@@ -132,7 +132,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"ReturnInput"]) {
         if ([self.NameInput.text length] || [self.LocationInput.text length]) {
-            NRBirdSight *sighting;
+            Item *sighting;
             NSDate *today = [NSDate date];
             
             NSString *text = self.NameInput.text;
@@ -146,8 +146,8 @@
                 
             }
             
-            sighting = [[NRBirdSight alloc] initWithName:value price:0 date:today];
-            self.birdSight = sighting;
+            sighting = [[Item alloc] initWithName:value price:0 date:today];
+            self.item = sighting;
         }
     }
 }
