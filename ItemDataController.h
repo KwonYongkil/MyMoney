@@ -17,12 +17,14 @@
 }
 @property (nonatomic, retain) NSMutableArray *items;
 @property (nonatomic, retain) NSMutableArray *sectionsArray;
+@property (nonatomic, retain) NSMutableArray *sectionNames;
+@property (nonatomic, retain) NSMutableArray *sectionSums;
 @property (nonatomic, retain) UILocalizedIndexedCollation *theCollation;
 
 //- (NSUInteger) countOfSection;
 //- (NSUInteger) countOfItemsInSection:(NSUInteger)section;
 - (NSUInteger) countOfList;
-- (Item*) itemInListAtIndex: (NSUInteger)theIndex;
+- (Item*) itemInListAtIndex: (NSIndexPath *)theIndexPath;
 - (void) addItemWithItem: (Item*) item;
 - (void) removeObjectFromListAtIndex: (NSUInteger)theIndex;
 

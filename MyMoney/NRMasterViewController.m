@@ -226,16 +226,25 @@
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return [self.dataController.theCollation sectionIndexTitles];
+    return [self.dataController.sectionNames copy];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[self.dataController.theCollation sectionTitles] objectAtIndex:section];
+    static NSNumberFormatter *numFormatter = nil;
+    
+    if (numFormatter == nil) {
+        numFormatter = [[NSNumberFormatter alloc] init];
+        [numFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+    }
+    NSString *sum = [numFormatter stringFromNumber: self.dataController.sectionSums[section]];
+    NSString *sectionName = [self.dataController.sectionNames objectAtIndex:section];
+    return [sectionName stringByAppendingFormat:@"\t\t(%@)", sum];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
-    return [self.dataController.theCollation sectionForSectionIndexTitleAtIndex:index];
+    //return [self.dataController.theCollation sectionForSectionIndexTitleAtIndex:index];
+    return [self.dataController.sectionNames indexOfObject:title];
 }
 
 - (void)didReceiveMemoryWarning
@@ -244,42 +253,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-- (void)insertNewObject:(id)sender
-{
-    //if (!_objects) {
-    //    _objects = [[NSMutableArray alloc] init];
-    //}
-    
-    if (!_list) {
-        _list = [[BirdSightDataController alloc] init];
-    }
-    
-    //[_objects insertObject:[NSDate date] atIndex:0];
-    
-    NSDate date;
-    NRBirdSight *birdSight = [ [NRBirdSight alloc] initWithName:@"Eagle" location:@"Pangyo" date: date];
-    
-    [_list addBirdSightWithBirdSight:birdSight];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
-*/
-
-
 #pragma mark - Table View
 
-/*
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.dataController countOfList];
-}
-*/
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -300,9 +275,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"ShowSightDetails"]) {
-        NRDetailViewController *detailViewController = [segue destinationViewController];
-        
-        detailViewController.item = [self.dataController itemInListAtIndex:[self.tableView indexPathForSelectedRow].row];
+        NRDetailViewController *detailViewController = [segue destinationViewController];        
+        detailViewController.item = [self.dataController itemInListAtIndex:[self.tableView indexPathForSelectedRow]];
     }
 }
 
@@ -327,7 +301,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self.dataController.theCollation sectionTitles] count];
+    //return [[self.dataController.theCollation sectionTitles] count];
+    return [self.dataController.sectionNames count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -359,30 +334,5 @@
     [ [cell detailTextLabel] setText: [numFormatter stringFromNumber: item.price]];
     return cell;
 }
-/*
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
- {
- static NSString *cellIdentifier = @"BirdSightCell";
- static NSDateFormatter *formatter = nil;
- static NSNumberFormatter *numFormatter = nil;
- 
- if ( formatter == nil){
- formatter = [ [NSDateFormatter alloc] init];
- [formatter setDateStyle:NSDateFormatterMediumStyle];
- }
- 
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellIdentifier];
- Item *birdSight =  [self.dataController itemInListAtIndex:indexPath.row];
- [ [cell textLabel] setText:birdSight.productName];
- //[ [cell detailTextLabel] setText: [formatter stringFromDate:(NSDate*)birdSight.date]];
- 
- if (numFormatter == nil) {
- numFormatter = [[NSNumberFormatter alloc] init];
- [numFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
- }
- [ [cell detailTextLabel] setText: [numFormatter stringFromNumber: birdSight.price]];
- return cell;
- 
- }*/
 
 @end
