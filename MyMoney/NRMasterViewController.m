@@ -21,11 +21,12 @@
     //NSMutableArray *_objects;
     //BirdSightDataController *_list;
 }
+
 @end
 
 @implementation NRMasterViewController
 
-
+BOOL IsUSD = FALSE;
 
 /*
  Algorithm
@@ -69,7 +70,7 @@
  */
 
 - (NSString*)deleteIgnoreKeyword: (NSString *) text{
-    NSArray *keywords = [NSArray arrayWithObjects:@"일시불/",@"일시불", @"*누적", @"누적", @"누계",nil ];
+    NSArray *keywords = [NSArray arrayWithObjects:@"일시불/",@"일시불", @"*누적", @"누적", @"누계", @"승인내역", nil ];
     
     for (NSString *keyword in keywords) {
         text = [text stringByReplacingOccurrencesOfString:keyword withString:@""];
@@ -93,11 +94,15 @@
 }
 - (BOOL)isDate: (NSString*) token{
     // format: 99/99
+    if ([token rangeOfString:@"/"].location == NSNotFound)
+        return FALSE;
     token = [token stringByReplacingOccurrencesOfString:@"/" withString:@""];
     return ( ([token length]==4) && ([token intValue]>0));
 }
 - (BOOL)isTime: (NSString*) token{
     // format: 99:99
+    if ([token rangeOfString:@":"].location == NSNotFound)
+        return FALSE;
     token = [token stringByReplacingOccurrencesOfString:@":" withString:@""];
     return ( ([token length]==4) && ([token intValue]>0));
 }
@@ -110,6 +115,10 @@
         *price = [[NSDecimalNumber  alloc] initWithString:token];
         return TRUE;
         //return [price initWithString:token]>0;
+    } else if (IsUSD && [token integerValue]>0) {
+        *price = [[NSDecimalNumber  alloc] initWithString:token];
+        *price = [*price decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:1024]];
+        return TRUE;
     }
     return 0;
 }
@@ -118,6 +127,8 @@
     
     UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
     NSString *text = [pasteBoard string];
+    
+    IsUSD = FALSE; // CHECK: what about JPN?
     
     //1. <ignore_keyword>를 삭제한다.
     text = [self deleteIgnoreKeyword:text];
@@ -134,13 +145,19 @@
 
     if (text != nil) {
         
+        
         //2. parse stirngs with white characters;
         NSArray *list = [text componentsSeparatedByCharactersInSet:
                             [NSCharacterSet characterSetWithCharactersInString:@"\n "]];
+        
+        productName = @"";
         for (NSString *aToken in list) {
             NSString *token = [aToken stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             if ([token isEqualToString:@""]){
                 continue;
+            }
+            else if ([token isEqualToString:@"[USD]"]){
+                IsUSD = TRUE;
             }
             else {
                 //NSLog(@"valid token=[%@]", token);
@@ -172,7 +189,7 @@
                 }
                 else /* it must be product name */ {
                     NSLog(@"token product=[%@]", token);
-                    productName = token;
+                    productName = [productName stringByAppendingFormat:@" %@",token];
                 }
                 
             }
@@ -243,7 +260,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
-    //return [self.dataController.theCollation sectionForSectionIndexTitleAtIndex:index];
     return [self.dataController.sectionNames indexOfObject:title];
 }
 
@@ -336,3 +352,5 @@
 }
 
 @end
+
+// 1/26 BUG!!!!

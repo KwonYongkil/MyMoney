@@ -60,6 +60,8 @@
         NSString *yearStr = [formatter stringFromDate:[NSDate date]];
         [formatter setDateFormat:@"yyyy/MM/dd HH:mm"];
         _date = [formatter dateFromString:[NSString stringWithFormat:@"%@/%@ %@",yearStr, dateStr, timeStr]];
+        if (_date == nil)
+            _date = [NSDate date];
         NSLog(@"item.date = %@", _date);
         return self;
     }
