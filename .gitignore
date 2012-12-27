@@ -1,5 +1,4 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
 # Xcode
 .DS_Store
 build/
@@ -18,10 +17,6 @@ profile
 *.moved-aside
 DerivedData
 .idea/
-=======
-
-MyMoney.xcodeproj/project.xcworkspace/xcuserdata/saekil.xcuserdatad/UserInterfaceState.xcuserstate
->>>>>>> ignore
 =======
 
 MyMoney.xcodeproj/project.xcworkspace/xcuserdata/saekil.xcuserdatad/UserInterfaceState.xcuserstate
